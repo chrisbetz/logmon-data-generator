@@ -17,7 +17,6 @@
                  [com.stuartsierra/component "0.3.1"]
 
                  ;; that's for my custom log4j appender
-                 [com.aphyr/riemann-java-client "0.4.1"]
-                 [junit/junit "4.12"]
+                 [gorillalabs/log4j-riemann-appender "0.1.0-SNAPSHOT"]
 
                  ])

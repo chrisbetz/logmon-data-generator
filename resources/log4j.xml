@@ -12,7 +12,7 @@
         </layout>
     </appender>
 
-    <appender name="riemann" class="RiemannAppender">
+    <appender name="riemann" class="org.gorillalabs.log4jAddons.RiemannAppender">
         <param name="Host" value="localhost"/>
         <param name="Port" value="5555"/>
         <param name="ReconnectionDelay" value="10000"/>
@@ -21,7 +21,7 @@
     <appender name="async" class="org.apache.log4j.AsyncAppender">
         <param name="BufferSize" value="500"/>
         <param name="Blocking" value="false"/>
-        <appender-ref ref="socket"/>
+        <appender-ref ref="riemann"/>
     </appender>
 
     <root>

@@ -2,11 +2,14 @@
   (:require [clojure.tools.logging :as log]
             [metrics.core :refer [new-registry]]
             [metrics.counters :refer [counter inc!]]
+            [metrics.meters :refer [meter mark!]]
             [metrics.reporters.console :as console]
             [metrics.reporters.riemann :as riemann]))
 
 (def reg (new-registry))
-(def sample-counter (counter reg ["logmon-data-generator sample"]))
+(def sample-counter (counter reg ["logmon-data-generator counter sample"]))
+(def sample-meter (meter reg ["logmon-data-generator meter sample"]))
+
 (def CR (console/reporter reg {}))
 (def RR (riemann/reporter (riemann/make-riemann "localhost" 5555) reg {}))
 
@@ -22,7 +25,8 @@
   )
 
 (defn count! []
-  (inc! sample-counter))
+  (inc! sample-counter)
+  (mark! sample-meter))
 
 (defn stop []
   (console/stop CR)

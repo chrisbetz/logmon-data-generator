@@ -27,6 +27,6 @@
     <root>
         <priority value="info"></priority>
         <appender-ref ref="console"/>
-        <appender-ref ref="riemann"/>
+        <appender-ref ref="async"/>
     </root>
 </log4j:configuration>
